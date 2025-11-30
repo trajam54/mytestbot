@@ -77,4 +77,6 @@ def webhook():
 
     text = message.get("text", "").strip()
 
-    if
+    if text == "/start":
+        send_menu(chat_id)
+    elif text == "Пом
