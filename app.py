@@ -79,4 +79,19 @@ def webhook():
 
     if text == "/start":
         send_menu(chat_id)
-    elif text == "Пом
+    elif text == "Помощь":
+        send_message(chat_id, "Напишите любой вопрос — я задам его Perplexity AI.")
+    elif text == "Спросить нейросеть":
+        send_message(chat_id, "Введите ваш вопрос.")
+    elif text:
+        try:
+            answer = ask_perplexity(text)
+        except Exception as e:
+            answer = f"Ошибка: {e}"
+        send_message(chat_id, answer)
+
+    return "ok"
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
